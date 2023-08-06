@@ -26,6 +26,11 @@ class Archive:
         return cls._instance
 
     def __init__(self, text: str, number: int):
+        """
+        Init params for class
+        :param text: -- some text;
+        :param number: -- some number;
+        """
         self.text = text
         self.number = number
 

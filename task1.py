@@ -9,7 +9,9 @@ import datetime
 
 
 class MyStr(str):
-
+    """
+    Exends str class.
+    """
     def __new__(cls, value, author):
         instance = super().__new__(cls, value)
         instance.author = author
