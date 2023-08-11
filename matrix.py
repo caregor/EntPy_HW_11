@@ -24,7 +24,7 @@ class Matrix:
         self.cols = cols
         self.data = [[0] * cols for _ in range(rows)]
 
-    def __set_value(self, row, col, value):
+    def set_value(self, row, col, value):
         """
         Set the value at the specified row and column of the matrix.
 
@@ -55,7 +55,7 @@ class Matrix:
             if len(row_values) != cols:
                 raise ValueError("Number of values entered does not match the number of columns")
             for j in range(cols):
-                matrix.__set_value(i, j, row_values[j])
+                matrix.set_value(i, j, row_values[j])
         return matrix
 
     def get_value(self, row, col):
