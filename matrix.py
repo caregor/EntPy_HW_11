@@ -24,7 +24,7 @@ class Matrix:
         self.cols = cols
         self.data = [[0] * cols for _ in range(rows)]
 
-    def set_value(self, row, col, value):
+    def __set_value(self, row, col, value):
         """
         Set the value at the specified row and column of the matrix.
 
@@ -37,6 +37,26 @@ class Matrix:
             self.data[row][col] = value
         else:
             raise IndexError("Row or column index out of bounds")
+
+    @classmethod
+    def from_input(cls, rows, cols):
+        """
+        Create a new matrix by taking input row by row.
+
+        :param cls: The class itself (Matrix).
+        :param rows: Number of rows in the matrix.
+        :param cols: Number of columns in the matrix.
+        :return: A new matrix created from the input.
+        """
+        matrix = cls(rows, cols)
+        for i in range(rows):
+            row_input = input(f"Enter values for row {i + 1} (space-separated): ")
+            row_values = list(map(int, row_input.split()))
+            if len(row_values) != cols:
+                raise ValueError("Number of values entered does not match the number of columns")
+            for j in range(cols):
+                matrix.__set_value(i, j, row_values[j])
+        return matrix
 
     def get_value(self, row, col):
         """
